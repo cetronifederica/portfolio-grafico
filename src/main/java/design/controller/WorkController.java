@@ -22,8 +22,8 @@ import design.model.Lavori;
 import design.repository.LavoriRepo;
 
 @Controller
-@RequestMapping("/lavori")
-public class LavoriController {
+@RequestMapping("/work")
+public class WorkController {
 
 	@Autowired
 	private LavoriRepo repo;
@@ -31,13 +31,13 @@ public class LavoriController {
 	@GetMapping
 	public String lavori(Model model) {
 		model.addAttribute("lavoriList", repo.findAll());
-		return "/lavori/lavori";
+		return "/work/work";
 	}
 
 	@GetMapping("/add")
 	public String serviziForm(Model model) {
 		model.addAttribute("newLavoro", new Lavori());
-		return "/lavori/add";
+		return "/work/add";
 	}
 
 	// Aggiunta del lavoro al database
@@ -59,13 +59,13 @@ public class LavoriController {
 
 		if (hasErrors) {
 			// se non ci sono errori non salvo il servizio nel database
-			return "lavori/add";
+			return "work/add";
 		} else {
 			try {
 				repo.save(lavoroForm);
 			} catch (Exception e) {
 				model.addAttribute("errorMessage", "Unable to save the Work");
-				return "lavori/add";
+				return "work/add";
 			}
 			return "redirect:/";
 		}
@@ -77,7 +77,7 @@ public class LavoriController {
 		Optional<Lavori> result = repo.findById(lavoriId);
 		if (result.isPresent()) {
 			model.addAttribute("lavori", result.get());
-			return "/lavori/add";
+			return "/work/add";
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The work with id " + lavoriId + " is not present");
 		}

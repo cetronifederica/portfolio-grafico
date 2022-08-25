@@ -22,8 +22,8 @@ import design.model.Servizi;
 import design.repository.ServiziRepo;
 
 @Controller
-@RequestMapping("/servizi")
-public class ServiziController {
+@RequestMapping("/services")
+public class ServicesController {
 
 	@Autowired
 	private ServiziRepo repo;
@@ -31,13 +31,13 @@ public class ServiziController {
 	@GetMapping
 	public String servizi(Model model) {
 		model.addAttribute("serviziList", repo.findAll());
-		return "/servizi/servizi";
+		return "/services/services";
 	}
 
 	@GetMapping("/add")
 	public String serviziForm(Model model) {
 		model.addAttribute("newServizio", new Servizi());
-		return "/servizi/add";
+		return "/services/add";
 	}
 
 	// Aggiunta del servizio al database
@@ -59,13 +59,13 @@ public class ServiziController {
 
 		if (hasErrors) {
 			// se non ci sono errori non salvo il servizio nel database
-			return "servizi/add";
+			return "services/add";
 		} else {
 			try {
 				repo.save(servizioForm);
 			} catch (Exception e) {
 				model.addAttribute("errorMessage", "Unable to save the Service");
-				return "servizi/add";
+				return "services/add";
 			}
 			return "redirect:/";
 		}
@@ -77,7 +77,7 @@ public class ServiziController {
 		Optional<Servizi> result = repo.findById(serviziId);
 		if (result.isPresent()) {
 			model.addAttribute("servizi", result.get());
-			return "/servizi/add";
+			return "/services/add";
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 					"Il servizio con id " + serviziId + " non è presente");
