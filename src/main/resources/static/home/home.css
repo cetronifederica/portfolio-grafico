@@ -1,0 +1,40 @@
+ /* link per il font del nome centro pagina */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* BODY */
+body {
+	background-color: rgb(255, 128, 128);
+}
+
+/* paragrafo testo FEDERICA DESIGN */
+p.nome {
+	font-family: 'Dancing Script', cursive;
+	font-size: 120px;
+	color: white;
+	position:absolute, center;
+	margin-top:250px;
+	left:50;
+}
+
+/* immagine - profilo */
+div.immagine {
+	border-left: 1px solid #000;
+}
+
+img.profilo {
+	max-width:600px;
+	margin-left: 20px;
+	margin-top: 30px;
+	
+}
+
+/* hr divisorio */
+hr {
+	margin-top: 20px;
+	color: white;
+}
+
+/* div - card*/
+div.lavori {
+	text-align: center;
+}

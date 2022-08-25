@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+  <!--  navbar (current: book - category) -->
+  <nav th:fragment="navbar(current)" class="navbar navbar-expand-lg navbar-dark bg-dark" >  
+	  <div class="container-fluid">
+	    <a class="navbar-brand" th:classAppend="${current == 'home'} ? active : not-active" href="/">
+	    	<i class="fa-solid fa-wand-magic-sparkles"></i> Federica Design
+	    </a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarNav">
+	      <ul class="navbar-nav">
+	        
+	        <li class="nav-item">
+	          <a class="nav-link" th:classAppend="${current == 'services'} ? active : not-active" href="/services">Services</a>
+	        </li><li class="nav-item">
+	          <a class="nav-link" th:classAppend="${current == 'work'} ? active : not-active" href="/work">Work</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" th:classAppend="${current == 'whoIAm'} ? active : not-active" href="/whoIAm">Who I Am</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" th:classAppend="${current == 'contacts'} ? active : not-active" href="/contacts">Contacts</a>
+	        </li>
+	     
+	      </ul>
+	  </div>
+	  </div>
+	</nav>
+  </body>
+</html>
